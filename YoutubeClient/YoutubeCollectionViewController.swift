@@ -76,15 +76,15 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
     }
    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        
-       
+
+
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let dvc = mainStoryBoard.instantiateViewController(withIdentifier: "ShowVideoViewController") as! ShowVideoViewController
-        
+
         dvc.urlEmbed = (itemsOfImage[indexPath.row].id1?.videoId)!
-        
+
         self.navigationController?.pushViewController(dvc, animated: true)
-  
+
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -99,10 +99,12 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
     }
     
     @IBAction func searchAction(_ sender: Any) {
+        
         searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchBar.text = searchText
+        self.present(searchController, animated: true, completion: nil)
         
         
         
