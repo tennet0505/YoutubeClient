@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8yo-w8-kSy">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeo.ttc">
+            <string>AppleSDGothicNeo-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Youtube Collection View Controller-->
+        <scene sceneID="I97-Yt-zHI">
+            <objects>
+                <collectionViewController id="g3U-Un-HV2" customClass="YoutubeCollectionViewController" customModule="YoutubeClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="H1X-nu-Ods">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4wa-oB-R2w">
+                            <size key="itemSize" width="373" height="241"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="l5S-vx-Puu" customClass="YoutubeCollectionViewCell" customModule="YoutubeClient" customModuleProvider="target">
+                                <rect key="frame" x="1" y="0.0" width="373" height="241"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="373" height="241"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRl-fP-YKW">
+                                            <rect key="frame" x="0.0" y="4" width="373" height="217"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="373" id="kbe-TM-MkZ"/>
+                                                <constraint firstAttribute="height" constant="217" id="nAV-Fq-Ys6"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rc3-MO-Ala">
+                                            <rect key="frame" x="0.0" y="221" width="373" height="20"/>
+                                            <color key="backgroundColor" red="1" green="0.041762114067320555" blue="0.093648709059097723" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="Rc3-MO-Ala" firstAttribute="leading" secondItem="l5S-vx-Puu" secondAttribute="leading" id="CCL-2t-hHE"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rc3-MO-Ala" secondAttribute="bottom" id="Gls-zc-cW4"/>
+                                    <constraint firstItem="Rc3-MO-Ala" firstAttribute="top" secondItem="rRl-fP-YKW" secondAttribute="bottom" id="bWS-Uj-Hfd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rc3-MO-Ala" secondAttribute="trailing" id="wpm-Im-a8A"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageVideo" destination="rRl-fP-YKW" id="5Xc-i1-1Zf"/>
+                                    <outlet property="labelVideo" destination="Rc3-MO-Ala" id="y8z-OV-PH9"/>
+                                    <segue destination="Lfe-6g-gPb" kind="show" id="AIa-jS-ltH"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="g3U-Un-HV2" id="rGK-c8-QOn"/>
+                            <outlet property="delegate" destination="g3U-Un-HV2" id="Sdr-8r-e8a"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="j8x-ym-b4k">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="EIc-yG-O8D">
+                            <connections>
+                                <action selector="searchAction:" destination="g3U-Un-HV2" id="Oh0-lT-d23"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OZl-eF-GHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="172" y="73.313343328335833"/>
+        </scene>
+        <!--Show Video View Controller-->
+        <scene sceneID="Zk9-x3-8r7">
+            <objects>
+                <viewController storyboardIdentifier="ShowVideoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lfe-6g-gPb" customClass="ShowVideoViewController" customModule="YoutubeClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vSp-Fr-m98">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ir-eP-OVf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4Ir-eP-OVf" firstAttribute="leading" secondItem="Nxc-6D-iSf" secondAttribute="leading" id="92C-qg-xku"/>
+                            <constraint firstItem="4Ir-eP-OVf" firstAttribute="trailing" secondItem="Nxc-6D-iSf" secondAttribute="trailing" id="Ml9-sw-Dh4"/>
+                            <constraint firstItem="4Ir-eP-OVf" firstAttribute="bottom" secondItem="Nxc-6D-iSf" secondAttribute="bottom" id="TWL-P3-JjC"/>
+                            <constraint firstItem="4Ir-eP-OVf" firstAttribute="top" secondItem="Nxc-6D-iSf" secondAttribute="top" id="WCY-xf-edX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Nxc-6D-iSf"/>
+                    </view>
+                    <connections>
+                        <outlet property="videoWebView" destination="4Ir-eP-OVf" id="i3a-6w-vXw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5D4-JE-Xce" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925.60000000000002" y="70.614692653673174"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Sgp-HC-4tg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8yo-w8-kSy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dp1-QZ-3dt">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="g3U-Un-HV2" kind="relationship" relationship="rootViewController" id="Joa-EW-NMV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ddH-sQ-90x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-524" y="73"/>
+        </scene>
+    </scenes>
+</document>
