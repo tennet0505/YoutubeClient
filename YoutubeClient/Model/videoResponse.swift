@@ -9,12 +9,15 @@
 import Foundation
 import ObjectMapper
 
+
 class VideosResponse: Mappable {
+    var page: String!
     var items:[Item]?
     
     
     required init?(map: Map) { }
     func mapping(map: Map) {
+        page <- map ["nextPageToken"]
         items <- map["items"]
     }
 }

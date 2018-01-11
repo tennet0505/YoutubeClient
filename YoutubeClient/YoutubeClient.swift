@@ -14,7 +14,7 @@ import AlamofireObjectMapper
 class YoutubeClient{
 
     
-func getVideo( q: String,
+    func getVideo( q: String, nextPage: String,
                
                successHandler :@escaping ([Item])->(),
                errorHandler   :@escaping (Error)->() )  {
@@ -22,8 +22,11 @@ func getVideo( q: String,
     let params = ["q" : q,
                   "key" : "AIzaSyDdpSKe16nlex7wx-TT_UdGPq2R4bO3w5k",
                   "part" : "snippet",
-                  "maxResults" : 25,
+                  "maxResults" : 5,
+                  "nextPageToken" : nextPage,
                   "type" : ""] as [String : Any]
+    
+    
     
     Alamofire.request("https://www.googleapis.com/youtube/v3/search", parameters: params)
         

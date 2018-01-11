@@ -8,39 +8,42 @@
 
 import UIKit
 import AlamofireImage
+import UIScrollView_InfiniteScroll
+
 
 private let reuseIdentifier = "cell"
 
 class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDelegate {
-
+   
+    @IBOutlet weak var menu: UIBarButtonItem!
+    
     var itemsOfImage = [Item]()
+
+  //  var np = VideosResponse(JSONString: "nextPageToken")
     
     var youtubeService = YoutubeClient()
     
     var searchController = UISearchController()
     var searchText = ""
+    var nextP = ""
+    
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      
-        youtubeService.getVideo(q: "dog",
-                                
-                                successHandler: { VideosResponse in
-                                    
-                                    self.itemsOfImage = VideosResponse
-                                    
-                                    self.collectionView?.reloadData()
-                                    
-        },
-                                errorHandler: { Error in
-                                    
-                                    print(Error)
-        }
-        )
-       self.collectionView?.reloadData()
+    
+        menu.target = self.revealViewController()
+        menu.action = #selector(SWRevealViewController.revealToggle(_:))
         
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        self.collectionView?.addInfiniteScroll { (collectionView) in
+            
+            self.loadMore()
+            self.collectionView?.finishInfiniteScroll()
+        }
         
     
     }
@@ -82,19 +85,39 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
         let dvc = mainStoryBoard.instantiateViewController(withIdentifier: "ShowVideoViewController") as! ShowVideoViewController
 
         dvc.urlEmbed = (itemsOfImage[indexPath.row].id1?.videoId)!
+        dvc.titleItemString = (itemsOfImage[indexPath.row].snippet?.title)!
+        dvc.imageItemString = (itemsOfImage[indexPath.row].snippet?.thumbanails?.high?.url)!
+       
 
         self.navigationController?.pushViewController(dvc, animated: true)
 
     }
     
+    //MARK Clicked SEARCH Button on keyboard
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchText = searchBar.text!
         self.navigationItem.title = searchText.uppercased()
         
+     //   self.collectionView?.reloadData()
+       
+        youtubeService.getVideo(q: searchText, nextPage: "",
+                                
+                                successHandler: { VideosResponse in
+                                    
+                                    self.itemsOfImage = VideosResponse
+                                    
+                                    self.collectionView?.reloadData()
+                                    
+        },
+                                errorHandler: { Error in
+                                    
+                                    print(Error)
+        }
+        )
         self.collectionView?.reloadData()
-        dismiss(animated: true, completion: nil)
         
+        dismiss(animated: true, completion: nil)
         
     }
     
@@ -107,11 +130,27 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
         self.present(searchController, animated: true, completion: nil)
         
         
-        
-        
     }
     
+    func loadMore() {
+        
+        youtubeService.getVideo(q: searchText, nextPage: nextP,
+                                
+                                successHandler: { VideosResponse in
+                                    
+                                    self.itemsOfImage.append(contentsOf: VideosResponse)
+                                    
+                                    self.nextP = "CAUQAA"
+                                    
+                                    self.collectionView?.reloadData()
+                                    
+        },
+                                errorHandler: { Error in
+                                    
+                                    print(Error)
+        })
     
+    }
     
     
     
