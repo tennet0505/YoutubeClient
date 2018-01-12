@@ -23,6 +23,7 @@
 		84F5B65820072C8400787A3C /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B65720072C8400787A3C /* MenuTableViewCell.swift */; };
 		84F5B65A2007457E00787A3C /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B6592007457E00787A3C /* FavoriteTableViewController.swift */; };
 		84F5B65C2007459500787A3C /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B65B2007459500787A3C /* FavoriteTableViewCell.swift */; };
+		84F5B65F20086E5000787A3C /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B65E20086E5000787A3C /* RealmModel.swift */; };
 		BDA76D63712EE052E55E1F6F /* Pods_YoutubeClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A396B9521EECF242DD546571 /* Pods_YoutubeClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		84F5B65720072C8400787A3C /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		84F5B6592007457E00787A3C /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		84F5B65B2007459500787A3C /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		84F5B65E20086E5000787A3C /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		A396B9521EECF242DD546571 /* Pods_YoutubeClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YoutubeClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5984B37676CC514E4FBC78E /* Pods-YoutubeClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoutubeClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-YoutubeClient/Pods-YoutubeClient.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,7 @@
 		84E145AA2004A85500886E79 /* YoutubeClient */ = {
 			isa = PBXGroup;
 			children = (
+				84F5B65D20086E1B00787A3C /* RealmObjects */,
 				84F5B65620072C5A00787A3C /* MenuSideBar */,
 				84F5B64A2006196B00787A3C /* Favorite */,
 				84E145C52004B76600886E79 /* Model */,
@@ -147,6 +150,14 @@
 				84F5B65720072C8400787A3C /* MenuTableViewCell.swift */,
 			);
 			path = MenuSideBar;
+			sourceTree = "<group>";
+		};
+		84F5B65D20086E1B00787A3C /* RealmObjects */ = {
+			isa = PBXGroup;
+			children = (
+				84F5B65E20086E5000787A3C /* RealmModel.swift */,
+			);
+			path = RealmObjects;
 			sourceTree = "<group>";
 		};
 		9F9FDD02BB4203EA8175BF7B /* Frameworks */ = {
@@ -273,6 +284,8 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -281,6 +294,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIScrollView_InfiniteScroll.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E145C72004B7A100886E79 /* videoResponse.swift in Sources */,
+				84F5B65F20086E5000787A3C /* RealmModel.swift in Sources */,
 				84E145C22004A95600886E79 /* YoutubeCollectionViewCell.swift in Sources */,
 				84F5B65520072C4E00787A3C /* MenuTableViewController.swift in Sources */,
 				84E145C02004A93900886E79 /* YoutubeCollectionViewController.swift in Sources */,

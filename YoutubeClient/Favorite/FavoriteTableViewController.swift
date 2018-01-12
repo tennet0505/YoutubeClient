@@ -7,21 +7,28 @@
 //
 
 import UIKit
+import RealmSwift
+import AlamofireImage
 
 class FavoriteTableViewController: UITableViewController {
 
-    var favoriteArray = [String]()
+    var favoriteVideoImageArray = [String]()
+    var favoriteVideoTitleArray = [String]()
+    
     var favItem = ""
+    
+  
+    let realm = try! Realm()
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updateVideo()
         
-        favoriteArray = ["111"]
-        favoriteArray.append(favItem)
-        
-     
         tableView.reloadData()
-        
+
     }
 
     
@@ -33,7 +40,7 @@ class FavoriteTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteArray.count
+        return favoriteVideoImageArray.count
     }
 
     
@@ -41,57 +48,62 @@ class FavoriteTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath)
         as! FavoriteTableViewCell
 
-        cell.favorieLabel.text = favoriteArray[indexPath.row]
-
+        cell.favorieLabel.text = favoriteVideoTitleArray[indexPath.row]
+       
         
+        let favImgUrlString = favoriteVideoImageArray[indexPath.row]
+        
+        let imageUrl = URL(string: favImgUrlString)
+        
+        cell.favoriteImage.af_setImage(withURL: imageUrl!)
         
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            favoriteVideoImageArray.remove(at: indexPath.row)
+            favoriteVideoTitleArray.remove(at: indexPath.row)
+         //   deleteVideos()
+            tableView.reloadData()
+        }
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    func updateVideo(){
+
+        let allVideo = realm.objects(VideoFavorite.self)
+
+        for video in allVideo{
+            favoriteVideoImageArray.append(video.imageFav)
+            favoriteVideoTitleArray.append(video.titleFav)
+
+            print("Add video \(video.imageFav) of \(video.titleFav)")
+
+            tableView.reloadData()
+        }
+        
 
     }
-    */
+    func deleteVideos(){
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+        
+        let allVideo = realm.objects(VideoFavorite.self)
+        for video in allVideo{
+
+            let realm =  try! Realm()
+
+            try! realm.write {
+
+                realm.delete(video)
+                tableView.reloadData()
+                
+                print ("Delete \(video)")
+
+            }
+
+        }
+    
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

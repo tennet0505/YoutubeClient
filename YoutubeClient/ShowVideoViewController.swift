@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import RealmSwift
 
 
 class ShowVideoViewController: UIViewController {
@@ -24,6 +25,10 @@ class ShowVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+   //     addVideo()
+//        updateVideo()
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
@@ -43,20 +48,47 @@ class ShowVideoViewController: UIViewController {
         loadIndicator.stopAnimating()
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
   
+  
     @IBAction func likeButton(_ sender: Any) {
         
-        
-   //     favorite.favImage = imageItemString
-        favorite.favItem = titleItemString
+        addVideo()
         
     }
     
+    func addVideo(){
+        
+        let video1 = VideoFavorite()
+   
+        video1.imageFav = imageItemString
+        video1.titleFav = titleItemString
+        
+        let realm =  try! Realm()
+        
+        try! realm.write {
+        
+            realm.add(video1)
+
+            
+            print ("Add \(video1)")
+        }
+        
+    }
+    func updateVideo(){
+
+        let realm = try! Realm()
+        let allVideo = realm.objects(VideoFavorite.self)
+
+        for video in allVideo{
+            print("Add video \(video.imageFav) of \(video.titleFav)")
+        }
+
+
+    }
   
     
     

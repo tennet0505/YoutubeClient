@@ -15,7 +15,6 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var favorieLabel: UILabel!
    
     
-    
  
 
 }
