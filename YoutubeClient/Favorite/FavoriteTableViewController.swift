@@ -14,21 +14,33 @@ class FavoriteTableViewController: UITableViewController {
 
     var favoriteVideoImageArray = [String]()
     var favoriteVideoTitleArray = [String]()
-    
+    var favoriteVideoURLArray = [String]()
+
     var favItem = ""
     
   
     let realm = try! Realm()
 
-    
+    // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.reloadData()
+       
         updateVideo()
         
-        tableView.reloadData()
+        print(favoriteVideoTitleArray)
+        
 
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        subscribeModelChanges()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        unSubscribeModelChanges()
     }
 
     
@@ -64,18 +76,39 @@ class FavoriteTableViewController: UITableViewController {
         if editingStyle == UITableViewCellEditingStyle.delete{
             favoriteVideoImageArray.remove(at: indexPath.row)
             favoriteVideoTitleArray.remove(at: indexPath.row)
-         //   deleteVideos()
+            
+            deleteVideos()
+        
+          
             tableView.reloadData()
         }
     }
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+//
+//        let dvc = mainStoryBoard.instantiateViewController(withIdentifier: "FavoritePlayerViewController") as! FavoritePlayerViewController
+//
+//
+//        dvc.webPlayer = favoriteVideoURLArray[indexPath.row]
+//        
+//
+//
+//        self.navigationController?.pushViewController(dvc, animated: true)
+//    }
 
     func updateVideo(){
-
+        favoriteVideoImageArray = []
+        favoriteVideoTitleArray = []
+        
         let allVideo = realm.objects(VideoFavorite.self)
 
         for video in allVideo{
             favoriteVideoImageArray.append(video.imageFav)
             favoriteVideoTitleArray.append(video.titleFav)
+        //    favoriteVideoTitleArray.append(video.videoURLFav)
+
 
             print("Add video \(video.imageFav) of \(video.titleFav)")
 
@@ -88,16 +121,17 @@ class FavoriteTableViewController: UITableViewController {
 
         
         let allVideo = realm.objects(VideoFavorite.self)
-        for video in allVideo{
+       
+        for video1 in allVideo{
 
+        
             let realm =  try! Realm()
-
             try! realm.write {
 
-                realm.delete(video)
+                realm.deleteAll()
                 tableView.reloadData()
                 
-                print ("Delete \(video)")
+                print ("Delete \(video1)")
 
             }
 
@@ -105,5 +139,18 @@ class FavoriteTableViewController: UITableViewController {
     
     }
     
-
+    //handle realm updates
+    var token:NotificationToken?
+    func subscribeModelChanges(){
+        token = try! Realm()
+            .objects(VideoFavorite.self)
+            .observe{ change in
+            self.updateVideo()
+        }
+    }
+    func unSubscribeModelChanges(){
+        token?.invalidate()
+    }
+    
+  
 }

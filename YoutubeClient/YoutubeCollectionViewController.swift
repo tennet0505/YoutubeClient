@@ -19,13 +19,12 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
     
     var itemsOfImage = [Item]()
 
-  //  var np = VideosResponse(JSONString: "nextPageToken")
     
     var youtubeService = YoutubeClient()
     
     var searchController = UISearchController()
     var searchText = ""
-    var nextP = ""
+    var nextP = "CAoQAA"
     
 
     
@@ -34,6 +33,23 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
         super.viewDidLoad()
 
     
+        youtubeService.getVideo(q: "the best", nextPage: "",
+                                
+                                successHandler: { VideosResponse in
+                                    
+                                    self.itemsOfImage = VideosResponse
+                                    
+                                    self.collectionView?.reloadData()
+                                    
+        },
+                                errorHandler: { Error in
+                                    
+                                    print(Error)
+        }
+        )
+        self.collectionView?.reloadData()
+        
+        
         menu.target = self.revealViewController()
         menu.action = #selector(SWRevealViewController.revealToggle(_:))
         
@@ -84,6 +100,7 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let dvc = mainStoryBoard.instantiateViewController(withIdentifier: "ShowVideoViewController") as! ShowVideoViewController
 
+        
         dvc.urlEmbed = (itemsOfImage[indexPath.row].id1?.videoId)!
         dvc.titleItemString = (itemsOfImage[indexPath.row].snippet?.title)!
         dvc.imageItemString = (itemsOfImage[indexPath.row].snippet?.thumbanails?.high?.url)!
@@ -134,13 +151,13 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
     
     func loadMore() {
         
-        youtubeService.getVideo(q: searchText, nextPage: nextP,
+        youtubeService.getVideo(q: searchText, nextPage: "CAoQAA",
                                 
                                 successHandler: { VideosResponse in
                                     
                                     self.itemsOfImage.append(contentsOf: VideosResponse)
                                     
-                                    self.nextP = "CAUQAA"
+                                   // self.nextP = "CAoQAA"
                                     
                                     self.collectionView?.reloadData()
                                     
@@ -151,11 +168,6 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
         })
     
     }
-    
-    
-    
-    
-    
-    
+
     
 }

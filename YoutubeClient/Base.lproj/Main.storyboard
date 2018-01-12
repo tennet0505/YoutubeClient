@@ -146,68 +146,6 @@
             </objects>
             <point key="canvasLocation" x="1264.8" y="70.614692653673174"/>
         </scene>
-        <!--Favorite Collection View Controller-->
-        <scene sceneID="ymd-fL-HbH">
-            <objects>
-                <collectionViewController id="d3d-Me-bKn" customClass="FavoriteCollectionViewController" customModule="YoutubeClient" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mwX-Hd-PbK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.88621023776010299" green="0.88283979774300614" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qp3-Hi-Nqu">
-                            <size key="itemSize" width="130" height="160"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="20" minY="30" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="KA5-xk-Ro4" customClass="FavoriteCollectionViewCell" customModule="YoutubeClient" customModuleProvider="target">
-                                <rect key="frame" x="20" y="30" width="130" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="130" height="160"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="2mB-nJ-EMZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7r-k6-N3L">
-                                            <rect key="frame" x="0.0" y="130" width="130" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="2mB-nJ-EMZ" secondAttribute="trailing" id="1Vh-xj-GOz"/>
-                                    <constraint firstAttribute="bottom" secondItem="2mB-nJ-EMZ" secondAttribute="bottom" constant="30" id="9sP-A7-SDa"/>
-                                    <constraint firstItem="2mB-nJ-EMZ" firstAttribute="leading" secondItem="KA5-xk-Ro4" secondAttribute="leading" id="N5B-UP-Md2"/>
-                                    <constraint firstAttribute="trailing" secondItem="h7r-k6-N3L" secondAttribute="trailing" id="Q2B-VP-tqk"/>
-                                    <constraint firstItem="h7r-k6-N3L" firstAttribute="top" secondItem="2mB-nJ-EMZ" secondAttribute="bottom" id="avr-wa-TvE"/>
-                                    <constraint firstItem="2mB-nJ-EMZ" firstAttribute="top" secondItem="KA5-xk-Ro4" secondAttribute="top" id="gfH-Bo-Dc0"/>
-                                    <constraint firstItem="h7r-k6-N3L" firstAttribute="leading" secondItem="KA5-xk-Ro4" secondAttribute="leading" id="lGB-1y-HtC"/>
-                                    <constraint firstAttribute="bottom" secondItem="h7r-k6-N3L" secondAttribute="bottom" id="m40-Ws-sJn"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="favoriteImage" destination="2mB-nJ-EMZ" id="5MB-aB-cV4"/>
-                                    <outlet property="favoriteLabel" destination="h7r-k6-N3L" id="l6V-Lx-arv"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="d3d-Me-bKn" id="rhd-Qj-2pP"/>
-                            <outlet property="delegate" destination="d3d-Me-bKn" id="zKX-aV-ZnY"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="LEo-7T-1zc"/>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ypZ-Yh-zcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1327" y="-676"/>
-        </scene>
         <!--Favorite Table View Controller-->
         <scene sceneID="Z1l-jk-gHr">
             <objects>
@@ -252,6 +190,7 @@
                                 <connections>
                                     <outlet property="favorieLabel" destination="5sH-B8-YcU" id="EZa-Cj-AkK"/>
                                     <outlet property="favoriteImage" destination="gME-Zc-7IM" id="snK-zC-lmB"/>
+                                    <segue destination="qSl-j7-oTw" kind="show" identifier="PlayerSegue" id="a5u-Uc-zw4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -260,11 +199,45 @@
                             <outlet property="delegate" destination="4U3-xK-ihn" id="e5D-hb-sAP"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="EMl-fB-5zD"/>
+                    <navigationItem key="navigationItem" id="k6C-zM-S6D"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6E-X0-9iY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2018" y="72"/>
+            <point key="canvasLocation" x="2743" y="71"/>
+        </scene>
+        <!--Favorite Player View Controller-->
+        <scene sceneID="eay-Da-lgG">
+            <objects>
+                <viewController storyboardIdentifier="FavoritePlayerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qSl-j7-oTw" customClass="FavoritePlayerViewController" customModule="YoutubeClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ucM-mP-OWG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zf7-gz-7JL">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zf7-gz-7JL" firstAttribute="trailing" secondItem="x2u-Z3-Bg2" secondAttribute="trailing" id="01J-q1-0a5"/>
+                            <constraint firstItem="Zf7-gz-7JL" firstAttribute="leading" secondItem="x2u-Z3-Bg2" secondAttribute="leading" id="hoE-IT-JER"/>
+                            <constraint firstItem="Zf7-gz-7JL" firstAttribute="bottom" secondItem="x2u-Z3-Bg2" secondAttribute="bottom" id="kAY-Uf-SVW"/>
+                            <constraint firstItem="Zf7-gz-7JL" firstAttribute="top" secondItem="x2u-Z3-Bg2" secondAttribute="top" id="sax-Xi-GVo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="x2u-Z3-Bg2"/>
+                    </view>
+                    <connections>
+                        <outlet property="WebPlayer" destination="Zf7-gz-7JL" id="nI6-o5-DR9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zNd-37-3zA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3496.8000000000002" y="71.514242878560722"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Sgp-HC-4tg">
@@ -332,7 +305,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="d3d-Me-bKn" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="yjZ-vo-qcx"/>
+                                    <segue destination="boU-zi-1qI" kind="custom" trigger="accessoryAction" customClass="SWRevealViewControllerSeguePushController" id="ko1-fD-hLL"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Contacts" id="rZA-OG-kIc" customClass="MenuTableViewCell" customModule="YoutubeClient" customModuleProvider="target">
@@ -360,24 +333,44 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZwV-AV-W7V" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lYF-ZN-vpI">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="8yo-w8-kSy" kind="relationship" relationship="viewControllers" id="9Jo-n2-b6k"/>
-                        <segue destination="4U3-xK-ihn" kind="relationship" relationship="viewControllers" id="Kyu-ra-pCa"/>
+                        <segue destination="boU-zi-1qI" kind="relationship" relationship="viewControllers" id="Kyu-ra-pCa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ZD-Jx-bez" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-962" y="73"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Syl-rt-Vzl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="boU-zi-1qI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="EMl-fB-5zD"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PEB-vQ-FjX">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4U3-xK-ihn" kind="relationship" relationship="rootViewController" id="9K3-yi-qux"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HGN-wo-t6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2017.5999999999999" y="71.964017991004496"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="1" width="256" height="256"/>
         <image name="youtube" width="269" height="187"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ko1-fD-hLL"/>
         <segue reference="zgH-IR-pBv"/>
     </inferredMetricsTieBreakers>
 </document>

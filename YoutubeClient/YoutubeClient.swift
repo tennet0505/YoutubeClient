@@ -23,7 +23,7 @@ class YoutubeClient{
                   "key" : "AIzaSyDdpSKe16nlex7wx-TT_UdGPq2R4bO3w5k",
                   "part" : "snippet",
                   "maxResults" : 5,
-                  "nextPageToken" : nextPage,
+                  "pageToken" : nextPage,
                   "type" : ""] as [String : Any]
     
     

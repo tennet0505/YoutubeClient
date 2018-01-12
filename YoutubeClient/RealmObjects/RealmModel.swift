@@ -13,6 +13,7 @@ class VideoFavorite : Object {
 
     @objc dynamic var imageFav = ""
     @objc dynamic var titleFav = ""
+    //@objc dynamic var videoURLFav = ""
 
 
 }

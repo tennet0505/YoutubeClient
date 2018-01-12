@@ -27,8 +27,7 @@ class ShowVideoViewController: UIViewController {
         super.viewDidLoad()
         
         
-   //     addVideo()
-//        updateVideo()
+  
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
@@ -57,6 +56,7 @@ class ShowVideoViewController: UIViewController {
     @IBAction func likeButton(_ sender: Any) {
         
         addVideo()
+    
         
     }
     
@@ -66,6 +66,7 @@ class ShowVideoViewController: UIViewController {
    
         video1.imageFav = imageItemString
         video1.titleFav = titleItemString
+      //  video1.videoURLFav = urlEmbed
         
         let realm =  try! Realm()
         
@@ -78,17 +79,20 @@ class ShowVideoViewController: UIViewController {
         }
         
     }
-    func updateVideo(){
-
-        let realm = try! Realm()
-        let allVideo = realm.objects(VideoFavorite.self)
-
-        for video in allVideo{
-            print("Add video \(video.imageFav) of \(video.titleFav)")
-        }
-
-
-    }
+    
+    
+    
+//    func updateVideo(){
+//
+//        let realm = try! Realm()
+//        let allVideo = realm.objects(VideoFavorite.self)
+//
+//        for video in allVideo{
+//            print("Add video \(video.imageFav) of \(video.titleFav)")
+//        }
+//
+//
+//    }
   
     
     

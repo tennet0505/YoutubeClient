@@ -16,14 +16,13 @@
 		84E145C42004B2C000886E79 /* YoutubeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E145C32004B2C000886E79 /* YoutubeClient.swift */; };
 		84E145C72004B7A100886E79 /* videoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E145C62004B7A100886E79 /* videoResponse.swift */; };
 		84E145C92004F00500886E79 /* ShowVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E145C82004F00400886E79 /* ShowVideoViewController.swift */; };
-		84F5B64C200619BF00787A3C /* FavoriteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B64B200619BF00787A3C /* FavoriteCollectionViewController.swift */; };
-		84F5B64E200619DB00787A3C /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B64D200619DB00787A3C /* FavoriteCollectionViewCell.swift */; };
 		84F5B6532007245300787A3C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B6512007245100787A3C /* SWRevealViewController.m */; };
 		84F5B65520072C4E00787A3C /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B65420072C4D00787A3C /* MenuTableViewController.swift */; };
 		84F5B65820072C8400787A3C /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B65720072C8400787A3C /* MenuTableViewCell.swift */; };
 		84F5B65A2007457E00787A3C /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B6592007457E00787A3C /* FavoriteTableViewController.swift */; };
 		84F5B65C2007459500787A3C /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B65B2007459500787A3C /* FavoriteTableViewCell.swift */; };
 		84F5B65F20086E5000787A3C /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B65E20086E5000787A3C /* RealmModel.swift */; };
+		84F5B6612008C8E900787A3C /* FavoritePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5B6602008C8E900787A3C /* FavoritePlayerViewController.swift */; };
 		BDA76D63712EE052E55E1F6F /* Pods_YoutubeClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A396B9521EECF242DD546571 /* Pods_YoutubeClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +39,6 @@
 		84E145C32004B2C000886E79 /* YoutubeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeClient.swift; sourceTree = "<group>"; };
 		84E145C62004B7A100886E79 /* videoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = videoResponse.swift; sourceTree = "<group>"; };
 		84E145C82004F00400886E79 /* ShowVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowVideoViewController.swift; sourceTree = "<group>"; };
-		84F5B64B200619BF00787A3C /* FavoriteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewController.swift; sourceTree = "<group>"; };
-		84F5B64D200619DB00787A3C /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		84F5B6502007244D00787A3C /* YoutubeClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YoutubeClient-Bridging-Header.h"; sourceTree = "<group>"; };
 		84F5B6512007245100787A3C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		84F5B6522007245300787A3C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -50,6 +47,7 @@
 		84F5B6592007457E00787A3C /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		84F5B65B2007459500787A3C /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		84F5B65E20086E5000787A3C /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		84F5B6602008C8E900787A3C /* FavoritePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlayerViewController.swift; sourceTree = "<group>"; };
 		A396B9521EECF242DD546571 /* Pods_YoutubeClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YoutubeClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5984B37676CC514E4FBC78E /* Pods-YoutubeClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoutubeClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-YoutubeClient/Pods-YoutubeClient.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,10 +123,9 @@
 		84F5B64A2006196B00787A3C /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				84F5B64B200619BF00787A3C /* FavoriteCollectionViewController.swift */,
-				84F5B64D200619DB00787A3C /* FavoriteCollectionViewCell.swift */,
 				84F5B6592007457E00787A3C /* FavoriteTableViewController.swift */,
 				84F5B65B2007459500787A3C /* FavoriteTableViewCell.swift */,
+				84F5B6602008C8E900787A3C /* FavoritePlayerViewController.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -313,11 +310,10 @@
 				84E145C72004B7A100886E79 /* videoResponse.swift in Sources */,
 				84F5B65F20086E5000787A3C /* RealmModel.swift in Sources */,
 				84E145C22004A95600886E79 /* YoutubeCollectionViewCell.swift in Sources */,
+				84F5B6612008C8E900787A3C /* FavoritePlayerViewController.swift in Sources */,
 				84F5B65520072C4E00787A3C /* MenuTableViewController.swift in Sources */,
 				84E145C02004A93900886E79 /* YoutubeCollectionViewController.swift in Sources */,
-				84F5B64C200619BF00787A3C /* FavoriteCollectionViewController.swift in Sources */,
 				84F5B65A2007457E00787A3C /* FavoriteTableViewController.swift in Sources */,
-				84F5B64E200619DB00787A3C /* FavoriteCollectionViewCell.swift in Sources */,
 				84F5B65C2007459500787A3C /* FavoriteTableViewCell.swift in Sources */,
 				84F5B6532007245300787A3C /* SWRevealViewController.m in Sources */,
 				84E145C42004B2C000886E79 /* YoutubeClient.swift in Sources */,
