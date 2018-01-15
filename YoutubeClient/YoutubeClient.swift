@@ -25,7 +25,7 @@ class YoutubeClient{
                   "part" : "snippet",
                   "maxResults" : 5,
                   "pageToken" : page,
-                  "type" : ""] as [String : Any]
+                  "q" : ""] as [String : Any]
     
     
     
