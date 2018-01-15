@@ -17,7 +17,7 @@ class FavoriteTableViewController: UITableViewController {
     var favoriteVideoURLArray = [String]()
 
     var favItem = ""
-    
+    var videos = [VideoFavorite]()
   
     let realm = try! Realm()
 
@@ -121,14 +121,15 @@ class FavoriteTableViewController: UITableViewController {
 
         
         let allVideo = realm.objects(VideoFavorite.self)
-       
         for video1 in allVideo{
 
-        
+           
+            
             let realm =  try! Realm()
             try! realm.write {
 
-                realm.deleteAll()
+                
+                realm.delete(video1)
                 tableView.reloadData()
                 
                 print ("Delete \(video1)")

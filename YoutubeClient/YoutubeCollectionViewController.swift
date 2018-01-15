@@ -24,7 +24,8 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
     
     var searchController = UISearchController()
     var searchText = ""
-    var nextP = "CAoQAA"
+    var nextP = YoutubeClient()
+    var nextPageToken = ""
     
 
     
@@ -122,10 +123,14 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
                                 
                                 successHandler: { VideosResponse in
                                     
+                                    
                                     self.itemsOfImage = VideosResponse
                                     
                                     self.collectionView?.reloadData()
                                     
+                                    let videoresponse = VideosResponse
+                                    
+                                    print(videoresponse)
         },
                                 errorHandler: { Error in
                                     
@@ -136,6 +141,7 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
         
         dismiss(animated: true, completion: nil)
         
+           
     }
     
     @IBAction func searchAction(_ sender: Any) {
@@ -151,16 +157,19 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
     
     func loadMore() {
         
-        youtubeService.getVideo(q: searchText, nextPage: "CAoQAA",
+        youtubeService.getVideo(q: searchText, nextPage: "",
                                 
                                 successHandler: { VideosResponse in
+                        
+                        //            self.nextPageToken = self.nextP.page
                                     
                                     self.itemsOfImage.append(contentsOf: VideosResponse)
+
                                     
                                    // self.nextP = "CAoQAA"
                                     
                                     self.collectionView?.reloadData()
-                                    
+                                    print(self.nextPageToken)
         },
                                 errorHandler: { Error in
                                     
@@ -168,6 +177,5 @@ class YoutubeCollectionViewController: UICollectionViewController, UISearchBarDe
         })
     
     }
-
     
 }

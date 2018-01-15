@@ -13,6 +13,7 @@ import AlamofireObjectMapper
 
 class YoutubeClient{
 
+    var page = ""
     
     func getVideo( q: String, nextPage: String,
                
@@ -23,7 +24,7 @@ class YoutubeClient{
                   "key" : "AIzaSyDdpSKe16nlex7wx-TT_UdGPq2R4bO3w5k",
                   "part" : "snippet",
                   "maxResults" : 5,
-                  "pageToken" : nextPage,
+                  "pageToken" : page,
                   "type" : ""] as [String : Any]
     
     
@@ -33,6 +34,10 @@ class YoutubeClient{
         .responseObject{
             (response: DataResponse<VideosResponse>) in
             
+            let videoResponse = response.result.value
+            
+            self.page = (videoResponse?.page)!
+            
             switch response.result {
                 
             case .success:
@@ -40,10 +45,15 @@ class YoutubeClient{
                 
                 print(String(bytes: response.data!, encoding: .utf8)!)
                 
+                print (videoResponse?.page)
+                
+                self.page = (videoResponse?.page)!
             case .failure(let error): errorHandler(error)
             }
-    }
+   
+        }
 
+  
     }
 }
 
